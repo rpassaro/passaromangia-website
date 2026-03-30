@@ -86,8 +86,8 @@ const Differentiator: React.FC = () => {
               </div>
               <div className="diff-row">
                 <span className="diff-row__label">Lab results</span>
-                <span className="diff-row__them">❌ Not supported</span>
-                <span className="diff-row__us">✅ Upload & auto-extract biomarkers</span>
+                <span className="diff-row__them">Not supported</span>
+                <span className="diff-row__us">Upload & auto-extract biomarkers</span>
               </div>
               <div className="diff-row">
                 <span className="diff-row__label">Memory</span>
