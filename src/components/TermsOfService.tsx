@@ -125,7 +125,7 @@ const TermsOfService: React.FC = () => {
 
         <h2>Governing Law</h2>
         <p>
-          These terms are governed by the laws of the State of Texas, United States, without regard to 
+          These terms are governed by the laws of the State of Florida, United States, without regard to 
           conflict of law provisions.
         </p>
 
