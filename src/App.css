@@ -1245,3 +1245,109 @@
     font-size: 0.9rem;
   }
 }
+
+/* ===== Screenshot Phone Frame ===== */
+.screenshot-phone {
+  position: relative;
+  width: 280px;
+  background: #1a1a1a;
+  border-radius: 40px;
+  padding: 12px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.1);
+}
+
+.screenshot-phone--hero {
+  width: 300px;
+}
+
+.screenshot-phone__notch {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 28px;
+  background: #1a1a1a;
+  border-radius: 0 0 18px 18px;
+  z-index: 2;
+}
+
+.screenshot-phone__screen {
+  width: 100%;
+  border-radius: 30px;
+  display: block;
+}
+
+/* ===== AI Showcase Section ===== */
+.ai-showcase {
+  padding: 100px 0;
+  background: linear-gradient(180deg, var(--color-bg) 0%, #f0fdf4 100%);
+}
+
+.ai-showcase__content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.ai-showcase__phone {
+  flex-shrink: 0;
+}
+
+.ai-showcase__details {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  flex: 1;
+}
+
+.ai-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ai-feature__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ai-feature__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 4px;
+}
+
+.ai-feature__desc {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .ai-showcase__content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .ai-feature {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .screenshot-phone {
+    width: 240px;
+  }
+  .screenshot-phone--hero {
+    width: 260px;
+  }
+}

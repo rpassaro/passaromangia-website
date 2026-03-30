@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import PhoneMockup from './PhoneMockup';
 
 const Hero: React.FC = () => {
   return (
@@ -51,7 +50,14 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
           <div className="hero__phone-glow" />
-          <PhoneMockup variant="scan" />
+          <div className="screenshot-phone screenshot-phone--hero">
+            <div className="screenshot-phone__notch" />
+            <img
+              src="/screenshots/scan-result.png"
+              alt="PassaroMangia scanning a product barcode"
+              className="screenshot-phone__screen"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import AIShowcase from './components/AIShowcase';
 import Features from './components/Features';
 import HowItWorks from './components/HowItWorks';
 import Stats from './components/Stats';
@@ -15,6 +16,7 @@ function App() {
     <div className="app">
       <Navbar />
       <Hero />
+      <AIShowcase />
       <Features />
       <HowItWorks />
       <Stats />

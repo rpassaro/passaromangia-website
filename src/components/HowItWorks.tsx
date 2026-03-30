@@ -1,25 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import PhoneMockup from './PhoneMockup';
 
 const steps = [
   {
     number: '01',
     title: 'Scan',
-    description: 'Point your camera at any barcode or restaurant menu to instantly identify the product.',
-    variant: 'scan' as const,
+    description: 'Point your camera at any barcode. Instantly identify the product and see its NutriScore rating.',
+    screenshot: '/screenshots/scan-result.png',
+    alt: 'Scanning a Lactaid milk barcode with instant results',
   },
   {
     number: '02',
     title: 'Analyze',
-    description: 'Get a detailed health score, ingredient breakdown, and additive warnings in seconds.',
-    variant: 'analyze' as const,
+    description: 'Get a detailed health score out of 100, macro breakdown, additive warnings, and ingredient analysis.',
+    screenshot: '/screenshots/product-score.png',
+    alt: 'Product details showing health score of 75 with macro breakdown',
   },
   {
     number: '03',
     title: 'Shop Healthier',
-    description: 'Discover better alternatives and order them through Instacart with a single tap.',
-    variant: 'shop' as const,
+    description: 'Get AI-powered shopping suggestions for healthier alternatives and order directly through Instacart.',
+    screenshot: '/screenshots/smart-shopping.png',
+    alt: 'Smart Shopping Lists with AI-generated healthier alternatives',
   },
 ];
 
@@ -56,7 +58,14 @@ const HowItWorks: React.FC = () => {
                 <p className="step__desc">{step.description}</p>
               </div>
               <div className="step__phone">
-                <PhoneMockup variant={step.variant} />
+                <div className="screenshot-phone">
+                  <div className="screenshot-phone__notch" />
+                  <img
+                    src={step.screenshot}
+                    alt={step.alt}
+                    className="screenshot-phone__screen"
+                  />
+                </div>
               </div>
             </motion.div>
           ))}
