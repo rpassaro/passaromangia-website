@@ -21,11 +21,11 @@ const PartnerPage: React.FC = () => {
     // Send to Supabase (partner_applications table or just email for now)
     // For launch, we'll just show success and you'll get notified
     try {
-      const res = await fetch('https://vfmnhlktkardfzuhjowy.supabase.co/rest/v1/partner_applications', {
+      const res = await fetch('https://gcewydvgnfcsdulmtnnn.supabase.co/rest/v1/partner_applications', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': 'sb_publishable_h931oRJbssq6-pcaYv1oEg_mLmf7aPh',
+          'apikey': 'sb_publishable_2EKGsn_G_tIsmXGWiSstGg_ZU6r1FX4',
           'Prefer': 'return=minimal',
         },
         body: JSON.stringify({
