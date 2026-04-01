@@ -1,5 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+
+// TODO: Add server-side Turnstile validation in the Cloudflare Worker
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement, options: {
+        sitekey: string;
+        callback: (token: string) => void;
+        'expired-callback'?: () => void;
+      }) => string;
+      reset: (widgetId: string) => void;
+      remove: (widgetId: string) => void;
+    };
+  }
+}
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -23,6 +39,47 @@ const PartnerPage: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<string | null>(null);
+
+  const onTurnstileVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
+  }, []);
+
+  useEffect(() => {
+    const renderWidget = () => {
+      if (turnstileRef.current && window.turnstile && !widgetIdRef.current) {
+        widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+          // TODO: Replace with real Turnstile site key in production
+          sitekey: '1x00000000000000000000AA',
+          callback: onTurnstileVerify,
+          'expired-callback': () => setTurnstileToken(null),
+        });
+      }
+    };
+
+    // If turnstile script is already loaded, render immediately
+    if (window.turnstile) {
+      renderWidget();
+    } else {
+      // Wait for the script to load
+      const interval = setInterval(() => {
+        if (window.turnstile) {
+          renderWidget();
+          clearInterval(interval);
+        }
+      }, 100);
+      return () => clearInterval(interval);
+    }
+
+    return () => {
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(widgetIdRef.current);
+        widgetIdRef.current = null;
+      }
+    };
+  }, [onTurnstileVerify]);
 
   const validate = (): boolean => {
     const errors: ValidationErrors = {};
@@ -52,13 +109,18 @@ const PartnerPage: React.FC = () => {
     setError(null);
 
     try {
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        'X-App-Token': 'dce205a532cacb0011ebeed9a7a11acfff487d941a243c4a23ee6513f0689dba',
+        'Prefer': 'return=minimal',
+      };
+      if (turnstileToken) {
+        headers['X-Turnstile-Token'] = turnstileToken;
+      }
+
       const res = await fetch('https://ryva-api.passaromangia.workers.dev/api/supabase/rest/v1/partner_applications', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-App-Token': 'dce205a532cacb0011ebeed9a7a11acfff487d941a243c4a23ee6513f0689dba',
-          'Prefer': 'return=minimal',
-        },
+        headers,
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
@@ -293,7 +355,9 @@ const PartnerPage: React.FC = () => {
                   </label>
                 </div>
 
-                <button type="submit" className="btn btn--primary btn--lg pf-submit" disabled={submitting || !agreedToTerms}>
+                <div ref={turnstileRef} style={{ marginBottom: '16px' }} />
+
+                <button type="submit" className="btn btn--primary btn--lg pf-submit" disabled={submitting || !agreedToTerms || !turnstileToken}>
                   {submitting ? 'Submitting...' : 'Submit Application'}
                 </button>
               </form>

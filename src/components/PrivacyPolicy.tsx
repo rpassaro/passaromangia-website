@@ -5,7 +5,7 @@ const PrivacyPolicy: React.FC = () => {
     <div className="legal-page">
       <div className="legal-page__container">
         <h1>Privacy Policy</h1>
-        <p className="legal-page__updated">Last updated: March 29, 2026</p>
+        <p className="legal-page__updated">Last updated: March 31, 2026</p>
 
         <h2>Overview</h2>
         <p>
@@ -61,6 +61,35 @@ const PrivacyPolicy: React.FC = () => {
             HealthKit. This data stays on your device and in your iCloud Health data.
           </li>
         </ul>
+
+        <h2>Information Collected Through Our Website</h2>
+        <h3>Partner Application Form</h3>
+        <p>
+          When you submit a partner application through our website, we collect the following information:
+        </p>
+        <ul>
+          <li>Name</li>
+          <li>Email address</li>
+          <li>Social media handle</li>
+          <li>Platform</li>
+          <li>Follower count</li>
+          <li>Optional message</li>
+        </ul>
+        <p>
+          This data is stored securely in our database (Supabase) and used solely to evaluate partnership
+          applications. We do not sell, share, or use this data for marketing purposes.
+        </p>
+        <p>
+          You may request deletion of your application data by contacting us at{' '}
+          <a href="mailto:privacy@ryva.com">privacy@ryva.com</a>.
+        </p>
+
+        <h3>Cookies and Security</h3>
+        <p>
+          We use Cloudflare for security and performance, which may set essential cookies required for
+          the proper functioning of our website (such as bot protection). We do not use tracking cookies
+          or third-party analytics on our website.
+        </p>
 
         <h2>Data We Do NOT Collect</h2>
         <ul>
