@@ -19,8 +19,9 @@ const Hero: React.FC = () => {
             <span className="hero__title--accent">Really Eating</span>
           </h1>
           <p className="hero__subtitle">
-            Scan any barcode for an instant health score, uncover hidden additives,
-            and get AI-powered recommendations for healthier alternatives — all in one tap.
+            Scan any barcode for a health score personalized to your dietary goals and
+            health needs, uncover hidden additives, and get AI-powered recommendations
+            tailored to you — all in one tap.
           </p>
           <div className="hero__actions">
             <a href="https://apps.apple.com" className="btn btn--primary btn--lg">

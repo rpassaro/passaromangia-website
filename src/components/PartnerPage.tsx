@@ -357,7 +357,7 @@ const PartnerPage: React.FC = () => {
 
                 <div ref={turnstileRef} style={{ marginBottom: '16px' }} />
 
-                <button type="submit" className="btn btn--primary btn--lg pf-submit" disabled={submitting || !agreedToTerms || !turnstileToken}>
+                <button type="submit" className="btn btn--primary btn--lg pf-submit" disabled={submitting || !agreedToTerms}>
                   {submitting ? 'Submitting...' : 'Submit Application'}
                 </button>
               </form>

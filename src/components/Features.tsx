@@ -17,7 +17,7 @@ const features = [
   {
     icon: SparklesIcon,
     title: 'AI Health Coach',
-    description: 'Get personalized nutrition advice powered by AI that learns your dietary goals.',
+    description: 'AI that learns your dietary goals, allergies, and health conditions — then tailors every recommendation to your unique profile.',
     color: 'var(--color-accent)',
   },
   {

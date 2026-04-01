@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { SparklesIcon } from '@heroicons/react/24/solid';
 
 const steps = [
   {
@@ -12,9 +13,10 @@ const steps = [
   {
     number: '02',
     title: 'Analyze',
-    description: 'Get a detailed health score out of 100, macro breakdown, additive warnings, and ingredient analysis.',
+    description: 'Your AI health advisor analyzes every product against your unique profile — dietary goals, allergies, and health conditions. Get a personalized score out of 100, smart ingredient warnings tailored to you, and clear reasons why a product does or doesn\'t fit your needs.',
     screenshot: '/screenshots/product-score.png',
     alt: 'Product details showing health score of 75 with macro breakdown',
+    aiPowered: true,
   },
 ];
 
@@ -47,7 +49,15 @@ const HowItWorks: React.FC = () => {
             >
               <div className="step__content">
                 <span className="step__number">{step.number}</span>
-                <h3 className="step__title">{step.title}</h3>
+                <h3 className="step__title">
+                  {step.title}
+                  {'aiPowered' in step && step.aiPowered && (
+                    <span className="step__ai-badge">
+                      <SparklesIcon width={14} height={14} />
+                      AI-Powered
+                    </span>
+                  )}
+                </h3>
                 <p className="step__desc">{step.description}</p>
               </div>
               <div className="step__phone">
