@@ -118,7 +118,7 @@ const PartnerPage: React.FC = () => {
         headers['X-Turnstile-Token'] = turnstileToken;
       }
 
-      const res = await fetch('https://ryva-api.passaromangia.workers.dev/api/supabase/rest/v1/partner_applications', {
+      const res = await fetch('https://api.ryva.health/api/supabase/rest/v1/partner_applications', {
         method: 'POST',
         headers,
         body: JSON.stringify({
