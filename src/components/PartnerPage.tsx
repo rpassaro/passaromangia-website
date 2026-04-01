@@ -111,7 +111,7 @@ const PartnerPage: React.FC = () => {
     try {
       const headers: Record<string, string> = {
         'Content-Type': 'application/json',
-        'X-App-Token': 'dce205a532cacb0011ebeed9a7a11acfff487d941a243c4a23ee6513f0689dba',
+        // Auth via Turnstile CAPTCHA token — no app token needed for website forms
         'Prefer': 'return=minimal',
       };
       if (turnstileToken) {
