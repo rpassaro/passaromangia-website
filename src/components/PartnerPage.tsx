@@ -52,7 +52,7 @@ const PartnerPage: React.FC = () => {
       if (turnstileRef.current && window.turnstile && !widgetIdRef.current) {
         widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
           // TODO: Replace with real Turnstile site key in production
-          sitekey: '1x00000000000000000000AA',
+          sitekey: '0x4AAAAAACyx_PXcXB2w_c1E',
           callback: onTurnstileVerify,
           'expired-callback': () => setTurnstileToken(null),
         });
