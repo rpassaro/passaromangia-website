@@ -55,7 +55,7 @@ const PrivacyPolicy: React.FC = () => {
             </a>.
           </li>
           <li>
-            <strong>Third-party AI providers</strong> — AI chat messages, shopping list generation requests, menu analysis requests, food photo analysis, and health document analysis are sent to third-party AI providers for processing. These requests include the content you provide and relevant context (such as your dietary profile and food rules). We have a Zero Data Retention (ZDR) agreement with our AI provider, meaning content is processed and discarded without being logged, stored, or used to train their models.
+            <strong>OpenAI</strong> — We use OpenAI's API (GPT-4o-mini and GPT Vision models) to: (1) extract product information from photos of food and cosmetic labels, (2) analyze ingredient text for nutritional and additive insights, (3) analyze user-uploaded health documents (with explicit in-app consent), and (4) generate personalized food recommendations and chat responses. These requests include the content you provide and relevant context (such as your dietary profile and food rules). Inputs are transmitted over HTTPS via our server-side proxy. OpenAI processes data under their standard API terms — your data is not used to train their models and is retained only briefly for abuse monitoring before deletion. We do not send your Apple ID, email, or precise health metrics from HealthKit to OpenAI.
           </li>
           <li>
             <strong>Instacart API (optional, where available)</strong> — if you use the "Order on Instacart" feature, your shopping list items will be sent to Instacart to create an order page. See{' '}
@@ -75,7 +75,7 @@ const PrivacyPolicy: React.FC = () => {
         <ul>
           <li>When you submit a health document for analysis, the document is <strong>redacted and sanitized on your device</strong> before any data is transmitted.</li>
           <li>The redacted content is sent in a single API call through our Cloudflare proxy to a third-party AI provider for analysis.</li>
-          <li>The raw document and the redacted content sent to the AI provider are <strong>ephemeral</strong>. We have a <strong>Zero Data Retention (ZDR) agreement</strong> with our AI provider, meaning content is processed and discarded without being logged, stored, or used to train models.</li>
+          <li>The raw document is <strong>ephemeral on our servers</strong> — it is not stored after processing. The redacted content sent to OpenAI is processed under their standard API terms: it is <strong>not used to train their models</strong> and is retained only briefly for abuse monitoring before deletion.</li>
           <li>Only the <strong>distilled nutritional findings</strong> returned from the analysis are saved, and they are stored <strong>locally on your device</strong>, not on our servers.</li>
         </ul>
         <p>
